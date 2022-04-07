@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 
+use App\Task;
+
 class TasksController extends Controller
 {
     /**
@@ -125,11 +127,11 @@ class TasksController extends Controller
      */
     public function destroy($id)
     {
-        // idの値でメッセージを検索して取得
+         // idの値でメッセージを検索して取得
         $task = Task::findOrFail($id);
-        // メッセージを更新
-        $task->content = $request->content;
-        $task->save();
+        // メッセージを削除
+        $task->delete();
+
 
         // トップページへリダイレクトさせる
         return redirect('/');
